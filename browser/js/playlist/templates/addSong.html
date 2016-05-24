@@ -1,0 +1,26 @@
+<div class="well">
+    <form class="form-horizontal" name="songForm" novalidate>
+        <fieldset>
+            <legend>Add to Playlist</legend>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">Song</label>
+                <div class="col-xs-10">
+
+                    <div ng-show="playlistForm.name.$invalid && !playlistForm.name.$pristine" class="alert alert-warning">Please enter a name</div>
+
+                    <!-- <select ng-options="song as song.name for song in songOptions track by song.id" ng-model="selected"></select> -->
+                    <div class="form-group">
+                        <input name="songOptions" id="songOptions" type="text" ng-model="selected" type="dropdown" typeahead=" song as song.name for song in songOptions | filter:$viewValue" class="form-control ">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-10 col-xs-offset-2">
+                    <button type="submit" class="btn btn-success" ng-disabled="playlistForm.$invalid" ng-click="addToPlaylist({id:selected.id})">Add Song</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <h1>{{name}}</h1>
+
+</div>
